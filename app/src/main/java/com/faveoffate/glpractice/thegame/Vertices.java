@@ -2,7 +2,7 @@ package com.faveoffate.glpractice.thegame;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
@@ -12,8 +12,9 @@ public class Vertices {
     final boolean hasColor;
     final boolean hasTexCoords;
     final int vertexSize;
-    final FloatBuffer vertices;
+    final IntBuffer vertices;
     final ShortBuffer indices;
+    int[] tmpBuffer;
 
     public Vertices(GLGraphics glGraphics, int maxVertices, int maxIndices, boolean
             hasColor, boolean hasTexCoords) {
@@ -21,9 +22,10 @@ public class Vertices {
         this.hasColor = hasColor;
         this.hasTexCoords = hasTexCoords;
         this.vertexSize = (2 + (hasColor?4:0) + (hasTexCoords?2:0)) * 4;
+        this.tmpBuffer = new int[maxVertices * vertexSize / 4];
         ByteBuffer buffer = ByteBuffer.allocateDirect(maxVertices * vertexSize);
         buffer.order(ByteOrder.nativeOrder());
-        vertices = buffer.asFloatBuffer();
+        vertices = buffer.asIntBuffer();
         if(maxIndices > 0) {
             buffer = ByteBuffer.allocateDirect(maxIndices * Short.SIZE / 8);
             buffer.order(ByteOrder.nativeOrder());
@@ -34,7 +36,10 @@ public class Vertices {
     }
     public void setVertices(float[] vertices, int offset, int length) {
         this.vertices.clear();
-        this.vertices.put(vertices, offset, length);
+        int len = offset + length;
+        for(int i=offset, j=0; i < len; i++, j++)
+            tmpBuffer[j] = Float.floatToRawIntBits(vertices[i]);
+        this.vertices.put(tmpBuffer, 0, length);
         this.vertices.flip();
     }
     public void setIndices(short[] indices, int offset, int length) {

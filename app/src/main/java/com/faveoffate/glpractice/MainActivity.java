@@ -23,8 +23,8 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class MainActivity extends ListActivity {
 
-    String tests[] = { "CannonTest", "CannonGravityTest", "FirstTriangleTest", "ColoredTriangleTest",
-            "TexturedTriangleTest", "IndexedTest", "BlendingTest", "BobTest" };
+    String tests[] = { "CannonTest", "CannonGravityTest", "CollisionTest", "Camera2DTest",
+            "TextureAtlasTest", "SpriteBatcherTest", "AnimationTest" };
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

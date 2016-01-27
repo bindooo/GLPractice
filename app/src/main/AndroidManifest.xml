@@ -33,6 +33,30 @@
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|orientation" >
         </activity>
+        <activity android:label="Collision Test"
+            android:name=".CollisionTest"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|orientation" >
+        </activity>
+        <activity android:label="Camera 2D Test"
+            android:name=".Camera2DTest"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|orientation" >
+        </activity>
+        <activity android:label="Texture Atlas Test"
+            android:name=".TextureAtlasTest"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|orientation" >
+        </activity>
+        <activity android:label="Sprite Batcher Test"
+            android:name=".SpriteBatcherTest"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|orientation" >
+        </activity>
+        <activity android:label="Animation Test"
+            android:name=".AnimationTest"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|orientation" >
+        </activity>
     </application>
-
 </manifest>
